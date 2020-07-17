@@ -15,17 +15,19 @@ $FileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // Allow certain file formats
 if($FileType != "pdf" && $FileType != "docx" && $FileType != "doc") {
-    die("Only pdf doc and docx are supported");
+    die(json_encode([ 'success' => false, 'msg'=> "Only pdf doc and docx are supported" ]));
 }
 
 mkdir($file_path . "/img/",0777,true);
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.<br>";
-    echo "id:" . strval($file_path) . "<br>";
-    echo "Processing File...<br>";
+//    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.<br>";
+//    echo "id:" . strval($file_path) . "<br>";
+//    echo "Processing File...<br>";
     exec("convert -density 300 -depth 8 -quality 90 \"" . $target_file . "\" " . $file_path ."/img/output.png");
-    echo "Finished!<br>";
-    echo "File link: <a href=" . FILE_BASE_URL . $file_id.  ">" . FILE_BASE_URL . $file_id . "</a>";
+//    echo "Finished!<br>";
+//    echo "File link: <a href=" . FILE_BASE_URL . $file_id.  ">" . FILE_BASE_URL . $file_id . "</a>";
+    $msg = FILE_BASE_URL . $file_id;
+    die(json_encode([ 'success'=> true , 'msg'=> $msg]));
 } else {
-    echo "Sorry, there was an error uploading your file.";
+    die(json_encode([ 'success' => false, 'msg'=> "Sorry, there was an error uploading your file." ]));
 }

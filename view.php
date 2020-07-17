@@ -10,9 +10,9 @@ if(!is_dir(strval($file_path))) {
 $document = glob("{$file_path}/*.{pdf,doc,docx}", GLOB_BRACE);
 foreach($document as $doc ):
     echo "<div class=\"container\">";
-    echo "<a href=";
+    echo "<a href='";
     echo $doc;
-    echo "> --- Download this file --- </a>";
+    echo "'> --- Download this file --- </a>";
     echo "</div>";
 endforeach;
 
