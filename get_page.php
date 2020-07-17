@@ -1,5 +1,6 @@
 <?php
 define("FILE_UPLOAD_PATH", "uploads/");
+
 $file_id=strval($_GET["id"]);
 $file_path = FILE_UPLOAD_PATH . $file_id;
 

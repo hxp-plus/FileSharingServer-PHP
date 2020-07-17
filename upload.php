@@ -1,5 +1,4 @@
 <?php
-
 define("MAX_RAND_NUMBER", 100000000);
 define("FILE_UPLOAD_PATH", "uploads/");
 define("FILE_BASE_URL", "http://localhost:8080/view.php?id=");
@@ -7,7 +6,6 @@ define("FILE_BASE_URL", "http://localhost:8080/view.php?id=");
 $file_id = strval(rand(MAX_RAND_NUMBER/10,MAX_RAND_NUMBER));
 $file_path = FILE_UPLOAD_PATH . $file_id;
 while(is_dir($file_path)) {
-    echo("Repeated file id: ". strval($file_id));
     $file_id = strval(rand(MAX_RAND_NUMBER/10,MAX_RAND_NUMBER));
     $file_path = FILE_UPLOAD_PATH . $file_id;
 }
