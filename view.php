@@ -29,7 +29,7 @@ endforeach;
         function next() {
             $.ajax({
                 async: true,
-                url: "/get_page.php?id=" + file_id + "&q=" + i.toString(),
+                url: "get_page.php?id=" + file_id + "&q=" + i.toString(),
                 success: function(r) {
                     ++i;
                     if (r !== "Image Not Found") {
